@@ -1,6 +1,12 @@
 // src/components/chat/SearchBar.tsx
 "use client";
 
+/// <reference lib="dom" />
+
+interface SpeechRecognitionConstructor {
+  new (): SpeechRecognition;
+}
+
 import { useState, useRef } from "react";
 import { toast } from "sonner";
 import {
