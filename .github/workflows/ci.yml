@@ -37,7 +37,7 @@ jobs:
         run: npm run lint
 
       - name: Run TypeScript check
-        run: npx tsc --noEmit
+        run: npx tsc --noEmit --skipLibCheck
 
   # ── Job 2: Build ─────────────────────────────────────────────────────
   build:

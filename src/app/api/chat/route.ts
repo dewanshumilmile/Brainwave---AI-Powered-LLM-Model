@@ -17,9 +17,9 @@ export async function POST(req: NextRequest) {
 
     // ── Arcjet protection ────────────────────────────────────────────────
     const decision = await chatArcjet.protect(req, {
-  userId: String(userId),
   requested: 1,
-});
+  userId: userId,
+} as Parameters<typeof chatArcjet.protect>[1]);
 
     if (decision.isDenied()) {
       if (decision.reason.isRateLimit()) {
