@@ -16,10 +16,11 @@ export async function POST(req: NextRequest) {
     }
 
     // ── Arcjet protection ────────────────────────────────────────────────
-    const decision = await chatArcjet.protect(req, {
-  requested: 1,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+const decision = await (chatArcjet as any).protect(req, {
   userId: userId,
-} as Parameters<typeof chatArcjet.protect>[1]);
+  requested: 1,
+});
 
     if (decision.isDenied()) {
       if (decision.reason.isRateLimit()) {
